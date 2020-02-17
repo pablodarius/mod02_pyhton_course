@@ -1,1 +1,1 @@
-"# mod02_pyhton_course" 
+# install intructions to work with my proyect
