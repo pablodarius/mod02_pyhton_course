@@ -20,7 +20,7 @@ class MyThermometer():
             return self.__temperature
         else:
             try:
-                temperature = int(temperature)
+                temperature = float(temperature)
                 self.__temperature = temperature
             except:
                 self.__temperature = 0
