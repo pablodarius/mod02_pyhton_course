@@ -39,13 +39,8 @@ class Circuit():
                     winner = True
                     messagebox.showinfo("And The WINNER Is...", turtle.color()[0])
                     print("And the winner is the {} turtle".format(turtle.color()[0]))
-                    break
-                    
-            
-        
-
-
-
+                    break                 
+ 
 if __name__ == "__main__":
     daytona = Circuit(640, 480)
     print(daytona)
