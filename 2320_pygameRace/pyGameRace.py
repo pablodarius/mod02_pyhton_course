@@ -25,7 +25,7 @@ class Game():
             pygame.display.flip()
 
             x += 0.25
-            if x >= 250:
+            if x >= 600:
                 winner = True
         
         pygame.quit()
