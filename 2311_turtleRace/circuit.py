@@ -29,7 +29,6 @@ class Circuit():
     
     def startRace(self):
         winner = False
-        # turtleWinner = ''
         while not winner:
             for turtle in self.runners:
                 run = random.randint(1,12)
