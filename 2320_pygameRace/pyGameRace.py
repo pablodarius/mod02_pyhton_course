@@ -5,7 +5,7 @@ class Game():
 
     def __init__(self):
         self.__screen = pygame.display.set_mode([640,480])
-        pygame.display.set_caption('Teenage Mutant Ninja Turtles')
+        pygame.display.set_caption('Mascot Race Python')
         self.background = pygame.image.load("./images/background.gif")
         self.runner = pygame.image.load("./images/sonic.gif")
 
