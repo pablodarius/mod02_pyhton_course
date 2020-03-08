@@ -2,16 +2,20 @@ import pygame, sys
 import random
 
 class Runner():
-    def __init__(self, x=0, y=0):
-        self.custom = pygame.image.load("./images/sonic.gif")
+    __customes = ("sonic", "megaman", "frank", "dino")
+
+    def __init__(self, x=0, y=0, custome=None):
+        self.custome = pygame.image.load("./images/{}.gif".format(custome))
         self.position = [x,y]
-        self.name = "Sonic"
+        self.name = ""
     
     def run(self):
         self.position[0] += random.randint(1,12)
 
 class Game():
-    runners = []
+    __runners = []
+    __posY = (100, 200, 300, 400)
+    __names = ("sonic", "megaman", "frank", "dino")
     __startLine = 5
     __finishLine = 620    
 
@@ -19,7 +23,10 @@ class Game():
         self.__screen = pygame.display.set_mode((640, 480))
         self.__background = pygame.image.load("./images/background.gif")
         pygame.display.set_caption('Python Mascot Race')
-        self.runners.append(Runner(self.__startLine, 240))
+
+        for i in range(4):
+            self.__runners.append(Runner(self.__startLine, self.__posY[i], self.__names[i]))
+            self.__runners[i].name = self.__names[i]
 
     def start(self):
         gameOver = False
@@ -28,15 +35,16 @@ class Game():
                 if event.type == pygame.QUIT:
                     gameOver = True
                 
-                self.runners[0].run()
-
-                if self.runners[0].position[0] >= self.__finishLine:
-                    print("And the winner is {}".format(self.runners[0].name))
-                    gameOver = True
+                for item in self.__runners:
+                    item.run()
+                    if item.position[0] >= self.__finishLine:
+                        print("And the winner is {}".format(item.name))
+                        gameOver = True
 
                 self.__screen.blit(self.__background, (0,0))
-                self.__screen.blit(self.runners[0].custom, self.runners[0].position)
-                pygame.display.flip()
+                for  item in self.__runners:
+                    self.__screen.blit(item.custome, item.position)
+                    pygame.display.flip()
         
         pygame.quit()
         sys.exit()
