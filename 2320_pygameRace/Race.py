@@ -50,6 +50,7 @@ class Game():
         sys.exit()
 
 if __name__ == "__main__":
-    game = Game()
     pygame.init()
+    game = Game()
+    
     game.start()
