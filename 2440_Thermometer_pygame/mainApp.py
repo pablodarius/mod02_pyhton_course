@@ -22,7 +22,7 @@ class NumberInput():
     def grades(self, grad=None):
         if grad is None:
             return self.__grades
-        else : 
+        else: 
             grad = str(grad)
             try:
                 self.__grades = int(grad)
@@ -33,7 +33,7 @@ class NumberInput():
     def width(self, val=None):
         if val is None:
             return self.__size[0]
-        else :             
+        else:             
             try:
                 self.__size[0] = int(val)
             except():
@@ -42,7 +42,7 @@ class NumberInput():
     def height(self, val=None):
         if val is None:
             return self.__size[1]
-        else :             
+        else:             
             try:
                 self.__size[1] = int(val)
             except():
@@ -51,7 +51,7 @@ class NumberInput():
     def size(self, val=None):
         if val == None:
             return self.__size
-        else():
+        else:
             try:
                 w = int(val[0])
                 h = int(val[1])
@@ -62,7 +62,7 @@ class NumberInput():
     def posX(self, val=None):
         if val is None:
             return self.__position[0]
-        else :             
+        else:             
             try:
                 self.__position[0] = int(val)
             except():
@@ -71,7 +71,7 @@ class NumberInput():
     def posY(self, val=None):
         if val is None:
             return self.__position[1]
-        else :             
+        else:             
             try:
                 self.__position[1] = int(val)
             except():
@@ -80,7 +80,7 @@ class NumberInput():
     def pos(self, val=None):
         if val == None:
             return self.__position
-        else():
+        else:
             try:
                 x = int(val[0])
                 y = int(val[1])
