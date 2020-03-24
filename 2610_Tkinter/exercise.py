@@ -1,10 +1,19 @@
 from tkinter import *
 from tkinter import ttk
 
-root = Tk()
+class mainApp(Tk):    
+    size = "640x480"
 
-root.geometry("640x480")
-root.title("My Window")
-root.configure(bg = "pink")
+    def __init__(self):
+        Tk.__init__(self)        
+#       self. root = Tk()
+        self.geometry(self.size)
+        self.title("My Window")
+        self.configure(bg = "pink")
+    
+    def start(self):
+        self.mainloop()
 
-root.mainloop()
+if __name__ == '__main__':
+    app = mainApp()
+    app.start()
