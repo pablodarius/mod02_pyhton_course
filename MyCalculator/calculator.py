@@ -2,17 +2,18 @@ from tkinter import *
 from tkinter import ttk
 
 class Calculator(Tk):    
+    operators = ['+', '-', '/', 'x', '*', '%']
     size = "400x600"
     box = None
     btn = None
-    
+        
     def __init__(self):
         Tk.__init__(self)        
         self.geometry(self.size)
         self.title("Calculator")
         self.configure(bg="#DED798")
         self.resizable(0, 0)        
-        self.box = StringVar(value="")
+        self.box = StringVar(value="0")
         
         self.createLayout()        
 
@@ -35,7 +36,7 @@ class Calculator(Tk):
         self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='7', command=lambda: self.pushBtn('7')).place(x=0, y=201-contY, width=100, height=100)
         self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='8', command=lambda: self.pushBtn('8')).place(x=100, y=201-contY, width=100, height=100)
         self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='9', command=lambda: self.pushBtn('9')).place(x=200, y=201-contY, width=100, height=100)
-        self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='X', command=lambda: self.pushBtn('x')).place(x=300, y=201-contY, width=100, height=100)
+        self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='x', command=lambda: self.pushBtn('x')).place(x=300, y=201-contY, width=100, height=100)
         self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='4', command=lambda: self.pushBtn('4')).place(x=0, y=301-contY, width=100, height=100)
         self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='5', command=lambda: self.pushBtn('5')).place(x=100, y=301-contY, width=100, height=100)
         self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='6', command=lambda: self.pushBtn('6')).place(x=200, y=301-contY, width=100, height=100)
@@ -46,14 +47,65 @@ class Calculator(Tk):
         self.btn = Button(bg=bg, fg=fg, relief=relief, font=font, text='+', command=lambda: self.pushBtn('+')).place(x=300, y=401-contY, width=100, height=100)
 
     
-    def pushBtn(self, txt=""):
+    def pushBtn(self, txt=''):
         if txt == 'C':
-            self.box.set("")
+            self.box.set('0')
+        elif txt == '=':
+            self.calculate()
         else:
-            label = self.box.get()
-            label = label + str(txt)
-            self.box.set(label)
-      
+            box = self.box.get()
+            if (box == '0' or box == 'Error') and txt != '.':
+                box = ''
+
+            box = box + str(txt)
+            self.box.set(box)
+    
+    def exeCalculate(self, op1, op2, sym):
+        result = 0
+        try:
+            num1 = float(op1)
+            num2 = float(op2)            
+            if sym == '+': result = num1+num2
+            elif sym == '-': result = num1-num2
+            elif sym == 'x': result = num1*num2
+            elif sym == '/': result = num1/num2
+            elif sym == '%': result = num1%num2
+            else: result = "Error"
+
+            result = str(result)
+        except:
+            result = "Error"
+                
+        return result
+    
+    def calculate(self):        
+        op1 = ''
+        op2 = ''
+        symbol = ''
+        result = 0
+
+        operation = self.box.get()
+        lastChar = operation[-1:]
+
+        if lastChar in self.operators:
+            self.box.set("Error")
+        
+        for char in operation:
+            if char not in self.operators:
+                if symbol == '':
+                    op1 = op1 + char
+                else:
+                    op2 = op2 + char
+            else:
+                symbol = char
+
+        result = self.exeCalculate(op1, op2, symbol)
+        self.box.set(result)
 
     def start(self):
         self.mainloop()
+
+
+if __name__ == "__main__":
+    app = Calculator()
+    app.start()
