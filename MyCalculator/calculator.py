@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 
 class Calculator(Tk):    
-    operators = ['+', '-', '/', 'x', '*', '%']
+    operators = ['+', '/', 'x', '*', '%']
     size = "400x600"
     box = None
     btn = None
@@ -83,6 +83,7 @@ class Calculator(Tk):
         op2 = ''
         symbol = ''
         result = 0
+        countMin = 0
 
         operation = self.box.get()
         lastChar = operation[-1:]
@@ -91,13 +92,17 @@ class Calculator(Tk):
             self.box.set("Error")
         
         for char in operation:
-            if char not in self.operators:
-                if symbol == '':
-                    op1 = op1 + char
-                else:
-                    op2 = op2 + char
+            if char == '-': countMin += 1
+            if (countMin == 2 and symbol == '') or (char == '-' and op1 != '' and symbol == ''): 
+                symbol = '-'
             else:
-                symbol = char
+                if char not in self.operators:
+                    if symbol == '':
+                        op1 = op1 + char
+                    else:
+                        op2 = op2 + char
+                else:
+                    symbol = char
 
         result = self.exeCalculate(op1, op2, symbol)
         self.box.set(result)
