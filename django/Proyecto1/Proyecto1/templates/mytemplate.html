@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <h1 style=" color: red">
+            Hello My Friend!, the first page with DJANGO!
+        </h1>
+        <p>The name is: {{name}} {{second_name}}</p>
+        <p>Date: {{time.day}} / {{time.month}} / {{time.year}}</p>
+
+        {% if themes %}
+            <p><strong>Themes: </strong></p>
+            <p>
+                <ul>
+                    {% for t in themes %}
+                        <li>{{t.upper}}</li> <!-- llamadas a métodos en las plantillas sin () -->
+                    {% endfor %}
+                </ul>
+            </p>
+        {% else %}
+            <p><strong>No Themes Today </strong></p>
+        {% endif %}
+
+    </body>
+</html>
