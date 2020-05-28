@@ -1,8 +1,22 @@
 <html>
     <body>
+        {% include "sup/bar.html" %}
+
         <h1 style=" color: red">
             Hello My Friend!, the first page with DJANGO!
         </h1>
+
+        {# python comments just like this #}
+        {% comment %}
+            just multi-line comments
+        {% endcomment %}
+
+        {% if name == 'Pablo' %}
+            <p>The professor is here</p>
+        {% else %}
+            <p>He is the substitute teacher</p>
+        {% endif %}
+
         <p>The name is: {{name}} {{second_name}}</p>
         <p>Date: {{time.day}} / {{time.month}} / {{time.year}}</p>
 
@@ -11,7 +25,9 @@
             <p>
                 <ul>
                     {% for t in themes %}
-                        <li>{{t.upper}}</li> <!-- llamadas a métodos en las plantillas sin () -->
+                        <!-- <li>{{t.upper}}</li>  llamadas a métodos en las plantillas sin () o se pueden usar filtro con el piper | -->
+                        <!-- <li>{{t|first|lower}}</li> <!-- o se pueden usar filtro con el piper | o filtros encadenados-->
+                        <li>{{t|upper}}</li> <!-- o se pueden usar filtro con el piper | o filtros encadenados-->
                     {% endfor %}
                 </ul>
             </p>
