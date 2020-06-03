@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Búsqueda de productos</title>
+    </head>
+    <body>
+        <h1>Contáctanos con la API Forms</h1>
+
+        {% if form.errors %}
+            <p style="color: red;">Por favor revisa este campo</p>
+        {% endif %}
+
+        <form action="/contacto/" method="POST">{% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Enviar">
+        </form>
+        
+    </body>
+</html>
