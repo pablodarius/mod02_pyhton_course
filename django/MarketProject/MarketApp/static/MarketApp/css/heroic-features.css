@@ -5,4 +5,35 @@
  */
 body {
   padding-top: 56px;
+  font-family: 'Lora';
+  background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url("../img/market.bmp");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgba(244,249,252,0.85);
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;  
+  background: linear-gradient(rgba(214, 213, 212, 0.856), rgba(214, 213, 212, 0.65)), url("../img/bg_index_panel.bmp");  
+  background-size: 100% 100%;
+  border-radius: 0.3rem;
+}
+
+.bg-dark {
+  background-color: #3473e9 !important;
 }
