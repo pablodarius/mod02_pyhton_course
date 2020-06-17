@@ -4,6 +4,49 @@
 
 {% block content %}
 
-<div><p></p></div>
+ <!-- Page Content -->
+ <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">       
+      <h1 class="display-4">
+          {% if marketName != 'None' %}
+            {{ marketName }}
+          {% else %}
+            All Markets
+          {% endif %}
+          Products
+      </h1>
+      <p class="lead">Have you place all yours items in the cart? Well, it's the check out moment, please push the button and confirm your shopping cart. When you finish the process, your purchase will be saved and the cart will be empty again.</p>      
+      <a href="#" class="btn btn-primary btn-lg"><img src="{% static 'MarketApp/img/logo3.gif' %}" alt="">Checkout!</a>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+      {% for p in products %}
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              {% static "" as baseUrl %}
+              <img class="card-img-top" src="{{ baseUrl }}MarketApp/img/{{ p.name }}.bmp" alt="">
+              <div class="card-body">
+                <h4 class="card-title"><strong>{{ p.name }}</strong></h4>
+                <p class="card-text">Situado en la zona: <strong>{{ p.place }}</strong></p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary">Take a look!</a>
+              </div>
+            </div>
+          </div>
+
+      {% endfor %}
+     
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
 
 {% endblock %}

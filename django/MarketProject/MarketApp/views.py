@@ -12,5 +12,10 @@ def markets(request):
 def cart(request):
     return render(request, "MarketApp/cart.html")
 
-def products(request):
-    return render(request, "MarketApp/products.html")
+def products(request, market):
+    if market != 'None':
+        all_products = Markets.objects.filter(name=market)
+    else:
+        all_products = Markets.objects.all()
+        
+    return render(request, "MarketApp/products.html", {"products": all_products, "marketName": market})
