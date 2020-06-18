@@ -28,14 +28,13 @@
 
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-100">
-              {% static "" as baseUrl %}
-              <img class="card-img-top" src="{{ baseUrl }}MarketApp/img/{{ p.name }}.bmp" alt="">
               <div class="card-body">
-                <h4 class="card-title"><strong>{{ p.name }}</strong></h4>
-                <p class="card-text">Situado en la zona: <strong>{{ p.place }}</strong></p>
+                <h4 class="card-title"><strong>{{ p.market.name }}</strong></h4>
+                <h3 class="card-title"><strong>{{ p.name }}</strong></h3>
+                <p class="card-text">Con un precio de: <strong>{{ p.price }}€</strong></p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary">Take a look!</a>
+                <a href="#" class="btn btn-primary">Add to Cart!</a>
               </div>
             </div>
           </div>
