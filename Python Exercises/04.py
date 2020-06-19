@@ -13,9 +13,9 @@ def hypotenuse(a,b):
     else:
         return -1
 
-def rectangleArea(a,b):
-    if (a > 0 and b > 0):        
-        return a * b    
+def squareArea(a):
+    if (a > 0):        
+        return a**2   
     else:
         return -1
 
@@ -30,14 +30,10 @@ class testing(unittest.TestCase):
         self.assertEqual(hypotenuse(3, -4), -1)
     
     def test02(self):
-        self.assertEqual(rectangleArea(6, 3), 5)
+        self.assertEqual(squareArea(6), 36)
     
-    def test02_Error_1(self):
-        self.assertEqual(rectangleArea(-6, 3), -1)
-    
-    def test02_Error_2(self):
-        self.assertEqual(rectangleArea(6, -3), -1)
-    
+    def test02_Error(self):
+        self.assertEqual(squareArea(-6), -1)
 
 if __name__ == "__main__":
     unittest.main()
