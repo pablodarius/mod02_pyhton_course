@@ -34,7 +34,7 @@
                 <p class="card-text">Con un precio de: <strong>{{ p.price }}€</strong></p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary">Add to Cart!</a>
+                <a href="{% url 'Cart' clickedProduct=p.id mode='add' %}" class="btn btn-primary">Add to Cart!</a>
               </div>
             </div>
           </div>
