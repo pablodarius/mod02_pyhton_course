@@ -1,6 +1,4 @@
 import unittest
-import datetime
-import math
 
 # Desarrolle un algoritmo que permita calcular Promedio de Notas
 
@@ -15,7 +13,7 @@ def averageCalif(calif):
 class testing(unittest.TestCase):
     def setUp(self):
         print("Preparing context...")
-        self.califications = [10, 2, 38, 23, 38, 23, 21]    
+        self.califications = [10, 2, 38, 23, 38, 23, 21]
 
     def test01(self):
         self.assertEqual(averageCalif(self.califications), 22.14)
