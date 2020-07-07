@@ -59,11 +59,11 @@ class testing(unittest.TestCase):
 
     def test_initialRandom(self):        
         self.assertEqual(len(generateCode()), 4)
-    
+
     def test_checking(self):
         code = generateCode()     
         self.assertEqual(checkAttempt(code, code), (4, 4))
-    
+
     def test_play(self):
         self.assertTrue(letsPlay())
 
