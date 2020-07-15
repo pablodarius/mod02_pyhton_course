@@ -5,12 +5,12 @@ from django.db import models
 class Markets(models.Model):
     name = models.CharField(max_length=30)
     place = models.CharField(max_length=30)
-    imagen = models.ImageField()
+    imagen = models.ImageField(upload_to='markets')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name = 'market'
-        verbose_name_plural = 'markets'    
+        verbose_name_plural = 'markets'
     def __str__(self):
         return self.name
 
@@ -19,7 +19,7 @@ class Products(models.Model):
     category = models.CharField(max_length=30)
     price = models.FloatField()
     market = models.ForeignKey(Markets, on_delete=models.CASCADE)
-    imagen = models.ImageField()
+    imagen = models.ImageField(upload_to='products')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     class Meta:

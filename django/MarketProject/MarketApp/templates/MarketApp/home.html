@@ -23,7 +23,8 @@
             <div class="card h-100">
               {% static "" as baseUrl %}
               <!-- <img class="card-img-top" src="{{ baseUrl }}MarketApp/img/{{ m.name }}.bmp" alt=""> -->
-              <img class="card-img-top" src="{{ baseUrl }}MarketApp/img/{{ m.imagen }}" alt="">
+              <!-- <img class="card-img-top" src="{{ baseUrl }}MarketApp/img/{{ m.imagen }}" alt=""> -->
+              <img class="card-img-top" src="/media/{{ m.imagen }}" alt="">
               <div class="card-body">
                 <h4 class="card-title"><strong>{{ m.name }}</strong></h4>
                 <p class="card-text">Situado en la zona: <strong>{{ m.place }}</strong></p>
