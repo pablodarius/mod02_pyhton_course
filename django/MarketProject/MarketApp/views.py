@@ -7,9 +7,6 @@ def home(request):
     all_markets = Markets.objects.all()
     return render(request, "MarketApp/home.html", {"markets": all_markets})
 
-def markets(request):
-    return render(request, "MarketApp/markets.html")
-
 def products(request, market):
     market_Name = market
 

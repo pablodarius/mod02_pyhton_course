@@ -37,9 +37,6 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item {% if request.path == '/markets' %}active{% endif %}">
-            <a class="nav-link" href="{% url 'Markets' %}">Markets</a>
-          </li>
           <li class="nav-item {% if request.path == '/cart' %}active{% endif %}">
             <a class="nav-link" href="{% url 'Cart' clickedProduct=None mode=None %}">Cart</a>
           </li>
