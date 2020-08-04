@@ -42,5 +42,5 @@ def cart(request, clickedProduct, mode):
     return render(request, "MarketApp/cart.html", {"products": all_products, "total": round(total, 2)})
 
 def historyCarts(request):
-    
-    return render(request, "MarketApp/historyCarts.html")
+    all_carts = History_Carts.objects.raw('SELECT * FROM MarketApp_history_carts GROUP BY idCart')
+    return render(request, "MarketApp/historyCarts.html", {"carts": all_carts})
