@@ -39,7 +39,7 @@ class History_Carts(models.Model):
     idCart = models.IntegerField()
     nameProduct = models.CharField(max_length=30)
     nameMarket = models.CharField(max_length=50)
-    priceProduct = models.FloatField()    
+    priceProduct = models.FloatField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     class Meta:

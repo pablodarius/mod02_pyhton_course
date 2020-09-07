@@ -44,7 +44,7 @@
             <a class="nav-link" href="{% url 'Products' market=None %}">Products</a>
           </li>
           <li class="nav-item {% if request.path == '/historyCart' %}active{% endif %}">
-            <a class="nav-link" href="{% url 'HistoryCarts' %}">History Cart</a>
+            <a class="nav-link" href="{% url 'HistoryCarts' idSelect=0 %}">History Cart</a>
           </li>
         </ul>
       </div>
