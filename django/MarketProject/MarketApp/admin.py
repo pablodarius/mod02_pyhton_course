@@ -8,5 +8,8 @@ class MarketsAdmin(admin.ModelAdmin):
 class ProductsAdmin(admin.ModelAdmin):
     readonly_fields = ("created", "updated")
 
+
+
 admin.site.register(Markets, MarketsAdmin)
 admin.site.register(Products, ProductsAdmin)
+

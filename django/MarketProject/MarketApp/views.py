@@ -43,10 +43,10 @@ def cart(request, clickedProduct, mode):
     return render(request, "MarketApp/cart.html", {"products": all_products, "total": round(total, 2)})
 
 def historyCarts(request, idSelect):
-    if request.method!="POST":
+    if request.method!="POST" and idSelect == 0:
         all_carts = History_Carts.objects.raw('SELECT * FROM MarketApp_history_carts GROUP BY idCart')
         selectedCart = History_Carts.objects.filter(idCart=idSelect)
-        return render(request, "MarketApp/historyCarts.html", {"carts": all_carts, "selected": selectedCart})  
+        return render(request, "MarketApp/historyCarts.html", {"carts": all_carts, "selected": selectedCart})
     else:
         myForm = CartForm()
         return render(request, "MarketApp/historyCarts.html", {"form": myForm})
