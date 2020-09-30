@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from MarketApp.models import Markets, Products, Cart, History_Carts
 from django.db.models import Max
-from .forms import CartForm
+import math
 
 # Create your views here.
 def home(request):
@@ -42,11 +42,13 @@ def cart(request, clickedProduct, mode):
 
     return render(request, "MarketApp/cart.html", {"products": all_products, "total": round(total, 2)})
 
-def historyCarts(request, idSelect):
-    if request.method!="POST" and idSelect == 0:
-        all_carts = History_Carts.objects.raw('SELECT * FROM MarketApp_history_carts GROUP BY idCart')
-        selectedCart = History_Carts.objects.filter(idCart=idSelect)
-        return render(request, "MarketApp/historyCarts.html", {"carts": all_carts, "selected": selectedCart})
-    else:
-        myForm = CartForm()
-        return render(request, "MarketApp/historyCarts.html", {"form": myForm})
+def historyCarts(request, idSelect=-1):
+    if request.method == 'POST':
+        idSelect = int(request.POST['hist'])
+    all_carts = History_Carts.objects.raw('SELECT * FROM MarketApp_history_carts GROUP BY idCart')
+    selectedCart = History_Carts.objects.filter(idCart=idSelect)
+    total = 0
+    for s in selectedCart:
+        total += s.priceProduct
+        
+    return render(request, "MarketApp/historyCarts.html", {"carts": all_carts, "selected": selectedCart, "idSelect":idSelect, "total": total})

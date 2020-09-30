@@ -10,25 +10,38 @@
   <!-- Jumbotron Header -->
   <header class="jumbotron my-4">
     <h1 class="display-4">Review your historic Carts</h1>
-    <p class="lead">Have you place all yours items in the cart? Well, it's the check out moment, please push the button and confirm your shopping cart. When you finish the process, your purchase will be saved and the cart will be empty again.</p>      
-    <form action="{% url 'HistoryCarts' idSelect=0 %}">
-      <select  name="carts" id="carts" class="btn btn-primary">  
-        <option value="" selected>--------------</option>
+    <p class="lead">Have you place all yours items in the cart? Well, it's the check out moment, please push the button and confirm your shopping cart. When you finish the process, your purchase will be saved and the cart will be empty again.</p>
+  
+    <form action="{% url 'HistoryCarts' %}" method="POST">  
+      {% csrf_token %}
+      <select class="btn btn-primary" id='hist' name='hist'>
+        {% if idSelect == '-1' %}
+        <option value='-1' selected>--------------</option>
+        {% else %}
+        <option value='-1'>--------------</option>
+        {% endif %}
         {% for c in carts %}
-        <option value="{{ c.id }}">{{ c.created }}</option>    
+          {% if idSelect == c.idCart %}
+          <option value="{{ c.idCart }}" selected>{{ c.created }}</option>
+          {% else %}
+          <option value="{{ c.idCart }}">{{ c.created }}</option>
+          {% endif %}
         {% endfor %}
       </select>
-      <input type="submit" value="Look at this" class="btn btn-primary">
-      <br><br>
+      <input type="submit" value="Look at this" class="btn btn-primary">      
+      <br><br>     
     </form>
+    
+      {% for s in selected %}
+        <p class="btn btn-primary">
+          {{ s.nameMarket }}<br>
+          {{ s.nameProduct }}<br>
+          {{ s.priceProduct }} €<br>
+        </p>
+      {% endfor %}
+      <br>
+      <h1 class="breadcrumb"> Total Price: {{ total }} €</h1>
   </header>
-
-  <form action="/historyCarts/" method="POST">{% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Enviar">
-  </form>
 
 </div>
 <!-- /.container -->
