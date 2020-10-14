@@ -18,7 +18,7 @@
           Products
       </h1>
       <p class="lead">Have you place all yours items in the cart? Well, it's the check out moment, please push the button and confirm your shopping cart. When you finish the process, your purchase will be saved and the cart will be empty again.</p>      
-      <a href="#" class="btn btn-primary btn-lg"><img src="{% static 'MarketApp/img/logo3.gif' %}" alt="">Checkout!</a>
+      <a href="{% url 'Cart' clickedProduct=None mode='0' %}" class="btn btn-primary btn-lg"><img src="{% static 'MarketApp/img/logo3.gif' %}" alt="">Checkout!</a>
     </header>
 
     <!-- Page Features -->

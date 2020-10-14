@@ -8,8 +8,12 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-        <h1 class="display-4">Are you finished? The price of your buy is: {{ total }}€</h1>
+        <h1 class="display-4">Are you finished? The price of your buy is: {{ total }}€</h1>        
+        {% if not products %}
+        <a href="{% url 'Cart' clickedProduct=None mode='0' %}" class="btn btn-primary btn-lg"><img src="{% static 'MarketApp/img/logo3.gif' %}" alt="">Checkout!</a>
+        {% else %}
         <a href="{% url 'Cart' clickedProduct=None mode='delete_all' %}" class="btn btn-primary btn-lg"><img src="{% static 'MarketApp/img/logo3.gif' %}" alt="">Checkout!</a>
+        {% endif %}
     </header>
 
     <!-- Page Features -->

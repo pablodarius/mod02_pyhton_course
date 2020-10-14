@@ -45,7 +45,7 @@ def cart(request, clickedProduct, mode):
 def historyCarts(request, idSelect=-1):
     if request.method == 'POST':
         idSelect = int(request.POST['hist'])
-    all_carts = History_Carts.objects.raw('SELECT * FROM MarketApp_history_carts GROUP BY idCart')
+    all_carts = History_Carts.objects.raw('SELECT * FROM MarketApp_history_carts GROUP BY idCart ORDER BY created desc')
     selectedCart = History_Carts.objects.filter(idCart=idSelect)
     total = 0
     for s in selectedCart:
