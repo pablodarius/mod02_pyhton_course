@@ -37,13 +37,13 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item {% if request.path == '/cart' %}active{% endif %}">
+          <li class="nav-item {% if request.path|slice:':5' == '/cart' %}active{% endif %}">
             <a class="nav-link" href="{% url 'Cart' clickedProduct=None mode=None %}">Cart</a>
           </li>
-          <li class="nav-item {% if request.path == '/products' %}active{% endif %}">
+          <li class="nav-item {% if request.path|slice:':9' == '/products' %}active{% endif %}">
             <a class="nav-link" href="{% url 'Products' market=None %}">Products</a>
           </li>
-          <li class="nav-item {% if request.path == '/historyCart' %}active{% endif %}">
+          <li class="nav-item {% if request.path|slice:':13' == '/historyCarts' %}active{% endif %}">
             <a class="nav-link" href="{% url 'HistoryCarts' %}">History Cart</a>
           </li>
         </ul>
