@@ -2,11 +2,10 @@ import unittest
 
 def toTen(top):
     number_list = []
-    for t in range(1, 11, 1):
+    for t in range(1, top + 1, 1):
         number_list.append(t)
 
     return number_list
-
 
 class testing(unittest.TestCase):
     def setUp(self):
@@ -17,7 +16,7 @@ class testing(unittest.TestCase):
     def test01(self):
         print("test01...")
         self.assertEqual(toTen(self.top), self.numbersList)
-    
+
     def tearDown(self):
         print("Deleting context...")
         del self.numbersList
